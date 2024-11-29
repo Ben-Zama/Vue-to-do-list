@@ -1,0 +1,279 @@
+/* Imports */
+
+@import url("https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Jura:wght@300..700&family=Pridi:wght@200;300;400;500;600;700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* Variables */
+
+:root {
+  color-scheme: light dark;
+}
+
+$background-color: light-dark(#eee, #111);
+$text-color: light-dark(#111, #eee);
+$shadow-color: light-dark(lightgray, #000);
+$button-text-color: light-dark(#eee, #111);
+$accent-important: #efcb68;
+$accent-optional: #b174b8;
+$header-font: "Pridi", sans-serif;
+$alternate-font: "Andika", sans-serif;
+$body-font: "Jura", sans-serif;
+
+/* Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+  cursor: pointer;
+}
+input:not([type="radio"]):not([type="checkbox"]) {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* App */
+
+body {
+  background-color: $background-color;
+}
+
+.main {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  background-color: $background-color;
+  .greeting {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 5%;
+    h2 {
+      font-family: $header-font;
+      font-weight: 500;
+      font-size: 15px;
+    }
+    input {
+      width: 100px;
+      font-family: $header-font;
+      font-weight: 500;
+      font-size: 20px;
+      color: #30638e;
+      flex: 1 1 0%;
+    }
+  }
+  .create {
+    margin-top: 25px;
+    padding: 0 5%;
+    h3 {
+      font-family: $header-font;
+      font-weight: normal;
+      font-size: 12.5px;
+    }
+    form {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 25px;
+      > input {
+        width: 100%;
+        background-color: $background-color;
+        box-shadow: 2px 2px 8px $shadow-color, -2px -2px 8px $shadow-color;
+        border-radius: 5px;
+        padding: 10px;
+        font-family: $body-font;
+      }
+      .options {
+        > p {
+          font-family: $alternate-font;
+        }
+        > div {
+          display: flex;
+          gap: 10px;
+          padding: 10px 0;
+          .important-div,
+          .optional-div {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 5px;
+            padding: 10px;
+            gap: 10px;
+            font-family: $body-font;
+            box-shadow: 2px 2px 8px $shadow-color, -2px -2px 8px $shadow-color;
+          }
+          .important {
+            accent-color: $accent-important;
+          }
+          .optional {
+            accent-color: $accent-optional;
+          }
+        }
+      }
+      button {
+        background-color: #30638e;
+        border-radius: 5px;
+        padding: 10px 0;
+        font-family: $alternate-font;
+        font-weight: bold;
+        color: $button-text-color;
+        &:hover {
+          background-color: darken($color: #30638e, $amount: 5);
+          box-shadow: 2px 2px 8px $shadow-color, -2px -2px 8px $shadow-color;
+        }
+      }
+    }
+  }
+  .list-container {
+    margin-top: 25px;
+    padding: 0 5%;
+    > h3 {
+      font-family: $header-font;
+      font-weight: normal;
+    }
+    .list {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 0;
+      gap: 10px;
+      .todo-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 5px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 8px $shadow-color, -2px -2px 8px $shadow-color;
+        > div {
+          width: 100%;
+          input {
+            font-family: $body-font;
+          }
+        }
+        .delete {
+          background-color: red;
+          color: $text-color;
+          padding: 5px 10px;
+          border-radius: 5px;
+          color: $button-text-color;
+        }
+      }
+    }
+    .clear-all {
+      margin-bottom: 25px;
+      background-color: #30638e;
+      width: 100%;
+      padding: 10px 0;
+      border-radius: 5px;
+      font-family: $alternate-font;
+      font-weight: bold;
+      color: $button-text-color;
+      &:hover {
+        background-color: darken($color: #30638e, $amount: 5);
+        box-shadow: 2px 2px 8px $shadow-color, -2px -2px 8px $shadow-color;
+      }
+    }
+  }
+}
+
+/* Bubble */
+
+.bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid $accent-important;
+  cursor: pointer;
+  &::after {
+    content: "";
+    display: block;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    background-color: $accent-important;
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+  }
+  &.optional {
+    border: 2px solid $accent-optional;
+    &::after {
+      background-color: $accent-optional;
+    }
+  }
+}
+
+input:checked ~ .bubble::after {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+/* Modal */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  .modal {
+    background-color: $background-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    color: $text-color;
+    h3 {
+      font-family: $header-font;
+    }
+    p {
+      font-family: $body-font;
+    }
+    .actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 25px;
+      button {
+        font-family: $alternate-font;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      :first-child {
+        background-color: rgb(242, 4, 4);
+      }
+      :last-child {
+        background-color: rgb(66, 216, 66);
+      }
+    }
+  }
+}
