@@ -11,6 +11,7 @@
 
 $background-color: light-dark(#eee, #111);
 $text-color: light-dark(#111, #eee);
+$primary-color: #30638e;
 $shadow-color: light-dark(lightgray, #000);
 $button-text-color: light-dark(#eee, #111);
 $accent-important: #efcb68;
@@ -76,7 +77,7 @@ body {
       font-family: $header-font;
       font-weight: 500;
       font-size: 20px;
-      color: #30638e;
+      color: $primary-color;
       flex: 1 1 0%;
     }
   }
@@ -131,14 +132,14 @@ body {
         }
       }
       button {
-        background-color: #30638e;
+        background-color: $primary-color;
         border-radius: 5px;
         padding: 10px 0;
         font-family: $alternate-font;
         font-weight: bold;
         color: $button-text-color;
         &:hover {
-          background-color: darken($color: #30638e, $amount: 5);
+          background-color: darken($color: $primary-color, $amount: 5);
           box-shadow: 2px 2px 8px $shadow-color, -2px -2px 8px $shadow-color;
         }
       }
@@ -181,7 +182,7 @@ body {
     }
     .clear-all {
       margin-bottom: 25px;
-      background-color: #30638e;
+      background-color: $primary-color;
       width: 100%;
       padding: 10px 0;
       border-radius: 5px;
@@ -189,7 +190,7 @@ body {
       font-weight: bold;
       color: $button-text-color;
       &:hover {
-        background-color: darken($color: #30638e, $amount: 5);
+        background-color: darken($color: $primary-color, $amount: 5);
         box-shadow: 2px 2px 8px $shadow-color, -2px -2px 8px $shadow-color;
       }
     }
@@ -248,7 +249,6 @@ input:checked ~ .bubble::after {
     background-color: $background-color;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
     padding: 20px;
     border-radius: 8px;
@@ -262,17 +262,19 @@ input:checked ~ .bubble::after {
     .actions {
       margin-top: 10px;
       display: flex;
-      gap: 25px;
+      justify-content: right;
+      gap: 10px;
       button {
         font-family: $alternate-font;
-        padding: 5px 10px;
-        border-radius: 5px;
+        padding: 5px 15px;
+        border-radius: 15px;
       }
       :first-child {
-        background-color: rgb(242, 4, 4);
+        color: $primary-color;
       }
       :last-child {
-        background-color: rgb(66, 216, 66);
+        background-color: $primary-color;
+        color: #FFF;
       }
     }
   }

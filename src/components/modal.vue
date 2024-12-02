@@ -4,8 +4,8 @@
       <h3>{{ title }}</h3>
       <p>{{ message }}</p>
       <div class="actions">
-        <button @click="confirm">Yes</button>
-        <button @click="cancel">No</button>
+        <button @click="cancel">Cancel</button>
+        <button @click="confirm">Delete</button>
       </div>
     </div>
   </div>
